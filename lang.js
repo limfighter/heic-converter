@@ -1,7 +1,7 @@
 (() => {
   const PREF_KEY = 'pref.lang';
   const path = window.location.pathname;
-  const isEn = path.endsWith('index-en.html') || path.endsWith('/en') || path.endsWith('/en/');
+  const isEn = path.endsWith('index-en.html') || path.endsWith('index-en') || path.endsWith('/en') || path.endsWith('/en/');
   const currentLang = isEn ? 'en' : 'ko';
 
   // 자동 리다이렉트: 첫 방문(설정 기록 없음)이고, 현재 페이지가 사용자 언어와 안 맞을 때만
