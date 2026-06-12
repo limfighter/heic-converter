@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lheic.com/sitemap.xml
