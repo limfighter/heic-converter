@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEIC JPG 변환 - 아이폰 사진 안 열릴 때, 무료 온라인 변환기</title>
+<meta name="description" content="아이폰 HEIC 사진을 JPG/PNG로 무료 변환하세요. 사진이 서버에 업로드되지 않고 내 브라우저에서만 처리됩니다.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="logo">HEIC<span>→</span>JPG 변환기</h1>
+    <p class="tagline">사진이 서버에 업로드되지 않습니다 · 내 브라우저에서 바로 변환</p>
+  </div>
+</header>
+
+<!-- 광고 슬롯 A -->
+<div class="ad-slot ad-slot-a container" aria-label="광고"></div>
+
+<main class="container">
+
+  <section class="converter" aria-label="변환기">
+    <div id="dropzone" class="dropzone">
+      <input type="file" id="fileInput" accept=".heic,.heif,image/heic,image/heif" multiple hidden>
+      <div class="dropzone-content">
+        <p class="dropzone-title">아이폰 사진(HEIC)을 여기에 끌어다 놓으세요</p>
+        <p class="dropzone-sub">또는 클릭해서 파일 선택 · 여러 장 동시 가능</p>
+      </div>
+    </div>
+
+    <div class="options">
+      <div class="option-group">
+        <span class="option-label">출력 형식</span>
+        <label><input type="radio" name="format" value="jpg" checked> JPG</label>
+        <label><input type="radio" name="format" value="png"> PNG</label>
+      </div>
+      <div class="option-group" id="qualityGroup">
+        <label for="quality" class="option-label">JPG 품질: <span id="qualityValue">0.9</span></label>
+        <input type="range" id="quality" min="0.5" max="1.0" step="0.05" value="0.9">
+      </div>
+    </div>
+
+    <div id="status" class="status" hidden>
+      <p id="statusText">0 / 0 변환 중…</p>
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+    </div>
+
+    <ul id="resultList" class="result-list" hidden></ul>
+
+    <button id="downloadZip" class="btn btn-primary" hidden>전체 ZIP으로 다운로드</button>
+  </section>
+
+  <!-- 광고 슬롯 B -->
+  <div class="ad-slot ad-slot-b" aria-label="광고"></div>
+
+  <section class="guide" aria-labelledby="guide-heading">
+    <h2 id="guide-heading">아이폰 사진이 PC에서 안 열릴 때 — HEIC을 JPG로 바꾸는 방법</h2>
+    <p>아이폰에서 찍은 사진을 카카오톡이나 USB로 옮겨 받으면 확장자가 <strong>.HEIC</strong>으로 되어 있어 윈도우 PC나 일부 웹사이트에서 열리지 않는 경우가 많습니다. HEIC은 아이폰의 기본 사진 저장 형식으로, 같은 화질에서 JPG보다 용량이 작지만 호환성이 낮습니다.</p>
+    <p>이 페이지에서는 아래 3단계로 간단히 JPG나 PNG로 바꿀 수 있습니다.</p>
+    <ol class="guide-steps">
+      <li><strong>① 파일 선택</strong> — 위 영역에 HEIC 파일을 끌어다 놓거나 클릭해서 선택하세요. 여러 장을 한 번에 선택할 수 있습니다.</li>
+      <li><strong>② 형식·품질 설정</strong> — JPG 또는 PNG를 고르고, JPG는 품질(용량과 화질의 균형)을 조절할 수 있습니다.</li>
+      <li><strong>③ 변환 및 다운로드</strong> — 자동으로 변환이 시작되며, 완료되면 개별 다운로드 또는 ZIP으로 한 번에 받을 수 있습니다.</li>
+    </ol>
+    <p>변환은 모두 <strong>이 페이지를 열어둔 브라우저 안에서</strong> 처리됩니다. 파일을 어딘가에 전송하거나 저장하지 않으므로, 졸업증명서나 신분증 같은 민감한 사진도 안심하고 변환할 수 있습니다.</p>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">자주 묻는 질문</h2>
+
+    <details>
+      <summary>HEIC 파일이 뭔가요?</summary>
+      <p>HEIC(High Efficiency Image Container)은 애플이 아이폰 6s 이후 기본 사진 형식으로 채택한 이미지 포맷입니다. 같은 화질에서 JPG보다 파일 용량이 절반 정도로 작지만, 윈도우나 일부 웹사이트·앱에서는 바로 열리지 않을 수 있습니다.</p>
+    </details>
+
+    <details>
+      <summary>이 사이트에 사진을 올리면 서버에 저장되나요?</summary>
+      <p>아니요. 이 변환기는 파일을 서버로 전송하지 않습니다. 브라우저 내부에서 동작하는 변환 엔진(WebAssembly)을 이용해 내 컴퓨터 안에서만 변환이 이루어지며, 페이지를 닫으면 모든 데이터가 사라집니다. 인터넷 연결을 끄고도(페이지 로드 후) 변환이 가능합니다.</p>
+    </details>
+
+    <details>
+      <summary>변환하면 화질이 떨어지나요?</summary>
+      <p>PNG로 변환하면 무손실로 원본 화질이 그대로 유지됩니다(다만 용량이 커질 수 있음). JPG로 변환할 경우 품질 슬라이더로 압축 정도를 조절할 수 있으며, 기본값(0.9)에서는 육안으로 차이를 거의 느끼기 어렵습니다.</p>
+    </details>
+
+    <details>
+      <summary>JPG와 PNG, 어떤 걸 선택해야 하나요?</summary>
+      <p>일반적인 사진 공유, 인쇄, 웹 업로드에는 <strong>JPG</strong>를 추천합니다. 용량이 작고 대부분의 사이트에서 호환됩니다. 투명 배경이 필요하거나 화질 손실 없이 보관하고 싶다면 <strong>PNG</strong>를 선택하세요.</p>
+    </details>
+
+    <details>
+      <summary>다른 변환 사이트와 어떤 점이 다른가요?</summary>
+      <p>많은 온라인 변환 사이트는 파일을 서버에 업로드한 뒤 처리해서 결과를 돌려주는 방식입니다. 이 사이트는 처리 자체가 브라우저 안에서만 일어나므로, 사진이 외부 서버를 거치지 않습니다. 개인 사진의 보안이 중요하다면 이 점이 가장 큰 차이입니다.</p>
+    </details>
+
+    <details>
+      <summary>한 번에 몇 장까지 변환할 수 있나요?</summary>
+      <p>장수 제한은 없지만, 변환은 컴퓨터의 메모리를 사용하므로 한 번에 너무 많은 고해상도 사진(예: 100장 이상)을 올리면 느려질 수 있습니다. 그럴 경우 여러 번에 나누어 변환하는 것을 추천합니다.</p>
+    </details>
+
+    <details>
+      <summary>변환이 안 되거나 실패하는 파일이 있어요</summary>
+      <p>파일이 손상되었거나 HEIC/HEIF가 아닌 경우 변환에 실패할 수 있습니다. 실패한 파일은 목록에 표시되며, 나머지 파일의 변환은 계속 진행됩니다. 실패한 파일만 다시 시도해 보세요.</p>
+    </details>
+
+    <details>
+      <summary>아이폰에서 처음부터 JPG로 사진을 찍을 수 있나요?</summary>
+      <p>네. 아이폰의 <strong>설정 → 카메라 → 포맷</strong>에서 "높은 호환성"을 선택하면 이후 촬영하는 사진이 HEIC 대신 JPG로 저장됩니다. 단, 파일 용량이 다소 커질 수 있습니다.</p>
+    </details>
+  </section>
+
+  <!-- 광고 슬롯 C -->
+  <div class="ad-slot ad-slot-c" aria-label="광고"></div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <nav class="footer-links">
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="terms.html">이용약관</a>
+    </nav>
+    <p class="footer-credit">
+      이미지 디코딩에 <a href="https://github.com/alexcorvi/heic2any" target="_blank" rel="noopener">heic2any</a>
+      (libheif, LGPL) 및 <a href="https://github.com/Stuk/jszip" target="_blank" rel="noopener">JSZip</a>(MIT)을 사용합니다.
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
