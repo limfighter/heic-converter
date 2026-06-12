@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEIC to JPG Converter - Free, Private, In Your Browser</title>
+<meta name="description" content="Convert iPhone HEIC photos to JPG or PNG for free. Nothing is uploaded — conversion happens entirely in your browser.">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="logo">HEIC<span>→</span>JPG converter</h1>
+    <p class="tagline">Your photos are never uploaded · Converted right in your browser</p>
+  </div>
+</header>
+
+<!-- Ad slot A -->
+<div class="ad-slot ad-slot-a container" aria-label="Advertisement"></div>
+
+<main class="container">
+
+  <section class="converter" aria-label="Converter">
+    <div id="dropzone" class="dropzone">
+      <input type="file" id="fileInput" accept=".heic,.heif,image/heic,image/heif" multiple hidden>
+      <div class="dropzone-content">
+        <p class="dropzone-title">Drop your iPhone photos (HEIC) here</p>
+        <p class="dropzone-sub">or click to select files · multiple files supported</p>
+      </div>
+    </div>
+
+    <div class="options">
+      <div class="option-group">
+        <span class="option-label">Output format</span>
+        <label><input type="radio" name="format" value="jpg" checked> JPG</label>
+        <label><input type="radio" name="format" value="png"> PNG</label>
+      </div>
+      <div class="option-group" id="qualityGroup">
+        <label for="quality" class="option-label">JPG quality: <span id="qualityValue">0.9</span></label>
+        <input type="range" id="quality" min="0.5" max="1.0" step="0.05" value="0.9">
+      </div>
+    </div>
+
+    <div id="status" class="status" hidden>
+      <p id="statusText">0 / 0 converted</p>
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+    </div>
+
+    <ul id="resultList" class="result-list" hidden></ul>
+
+    <button id="downloadZip" class="btn btn-primary" hidden>Download all as ZIP</button>
+  </section>
+
+  <!-- Ad slot B -->
+  <div class="ad-slot ad-slot-b" aria-label="Advertisement"></div>
+
+  <section class="guide" aria-labelledby="guide-heading">
+    <h2 id="guide-heading">iPhone photos won't open on your PC? Here's how to convert HEIC to JPG</h2>
+    <p>Photos taken on an iPhone are often saved as <strong>.HEIC</strong> files. When you transfer them to a Windows PC, email them, or upload them to a website, they may not open at all. HEIC is Apple's default photo format — it keeps the same quality at a smaller file size than JPG, but far fewer apps and websites support it.</p>
+    <p>This page lets you convert HEIC to JPG or PNG in three simple steps.</p>
+    <ol class="guide-steps">
+      <li><strong>1. Select files</strong> — Drag and drop your HEIC files into the area above, or click to choose them. You can select multiple files at once.</li>
+      <li><strong>2. Choose format and quality</strong> — Pick JPG or PNG. For JPG, you can adjust the quality slider to balance file size and image quality.</li>
+      <li><strong>3. Convert and download</strong> — Conversion starts automatically. Once finished, download files individually or get them all at once as a ZIP.</li>
+    </ol>
+    <p>Everything happens <strong>inside the browser tab you have open</strong>. Nothing is sent anywhere or stored on any server, so it's safe to convert sensitive photos — IDs, documents, anything.</p>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Frequently asked questions</h2>
+
+    <details>
+      <summary>What is a HEIC file?</summary>
+      <p>HEIC (High Efficiency Image Container) is the default photo format on iPhones running iOS 11 and later. It stores images at roughly half the file size of JPG at the same quality, but it isn't fully supported by Windows, some websites, and many apps.</p>
+    </details>
+
+    <details>
+      <summary>If I upload a photo here, is it stored on a server?</summary>
+      <p>No. This converter never sends your files to a server. It runs a conversion engine (WebAssembly) directly in your browser, so everything happens on your own device — and disappears the moment you close the page. Conversion even works without an internet connection once the page has loaded.</p>
+    </details>
+
+    <details>
+      <summary>Does converting reduce image quality?</summary>
+      <p>Converting to PNG is lossless — the original quality is preserved exactly (though the file size may increase). Converting to JPG uses the quality slider to control compression; at the default value (0.9), the difference is essentially invisible to the eye.</p>
+    </details>
+
+    <details>
+      <summary>Should I choose JPG or PNG?</summary>
+      <p>For general sharing, printing, and uploading to websites, <strong>JPG</strong> is recommended — smaller files, supported almost everywhere. Choose <strong>PNG</strong> if you need a transparent background or want to keep the file completely lossless.</p>
+    </details>
+
+    <details>
+      <summary>How is this different from other converter sites?</summary>
+      <p>Most online converters upload your file to a server, process it there, and send back the result. This site does all the processing inside your browser, so your photos never leave your device. If privacy matters for your images, that's the key difference.</p>
+    </details>
+
+    <details>
+      <summary>How many files can I convert at once?</summary>
+      <p>There's no hard limit, but conversion uses your computer's memory, so converting a very large batch of high-resolution photos at once (e.g. 100+) may slow down. If that happens, try converting in smaller batches.</p>
+    </details>
+
+    <details>
+      <summary>Some of my files failed to convert</summary>
+      <p>A file may fail if it's corrupted or isn't actually a HEIC/HEIF file. Failed files are marked in the list, and the rest of your batch continues normally. You can try re-converting just the failed files.</p>
+    </details>
+
+    <details>
+      <summary>Can I make my iPhone take JPG photos instead of HEIC?</summary>
+      <p>Yes. Go to <strong>Settings → Camera → Formats</strong> and select "Most Compatible." New photos will be saved as JPG instead of HEIC, though file sizes will be somewhat larger.</p>
+    </details>
+
+    <details>
+      <summary>Can Windows preview HEIC files?</summary>
+      <p>Not by default — Windows lacks a built-in HEIC codec, so File Explorer often shows a broken icon and double-clicking won't open the file. On Windows 11, installing the "HEIF Image Extensions" from the Microsoft Store enables thumbnails and previews. Keep in mind this only helps on your own PC — if you need to share the photo or upload it elsewhere, converting to JPG is the more reliable option.</p>
+    </details>
+  </section>
+
+  <!-- Ad slot C -->
+  <div class="ad-slot ad-slot-c" aria-label="Advertisement"></div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <nav class="footer-links">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+    </nav>
+    <p class="footer-credit">
+      Image decoding powered by <a href="https://github.com/alexcorvi/heic2any" target="_blank" rel="noopener">heic2any</a>
+      (libheif, LGPL) and <a href="https://github.com/Stuk/jszip" target="_blank" rel="noopener">JSZip</a> (MIT).
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="app.js"></script>
+<script src="lang.js"></script>
+</body>
+</html>
